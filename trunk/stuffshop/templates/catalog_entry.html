@@ -1,0 +1,18 @@
+{% load thumbnail %}
+
+<div class="product">
+    <div class="product_img">
+        <a href="{{ product.get_absolute_url }}">
+            {% thumbnail product.get_main_image.image "90" as im %}
+            <img src="{{ im.url }}" alt="{{ product.title }}">
+            {% endthumbnail %}
+        </a>
+    </div>
+    <div class="product_desc">
+        <h3><a href="{{ product.get_absolute_url }}">{{ product.title }}</a></h3>
+        {% for row in product.cast.get_short_description %}
+        <p>{{ row }}</p>
+        {% endfor %}
+    </div>
+    <div class="product_price">{{ product.price }} руб.</div>
+</div>
