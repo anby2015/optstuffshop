@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<link rel="Shortcut Icon" href="media/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="/media/main.css">
+		<!--[if lte IE 7]><style type="text/css">.product {display: inline}</style><![endif]-->
+		    <title>
+                {% block title %}
+                Китайские телефоны и электроника из Китая - optStuff.ru
+                {% endblock %}
+            </title>
+        {% block scripts %}{% endblock %}
+	</head>
+
+<body>
+    <!--[if IE]> <div id="topline"></div> <![endif]-->
+	<div id="sub_header">
+		<h1>китайские телефоны и электроника из Китая</h1>
+	</div>
+	<div id="header">
+		<div id="header_logo">
+			<img src="/media/images/optstuff_logo.png" alt="Китайские телефоны optstuff.ru">
+		</div>
+		<div id="header_search">
+			<form action="#">
+				<input id="search_field" type="text" onblur="if (this.value=='')this.value='найти на сайте'" onclick="if (this.value=='найти на сайте')this.value=''" maxlength="20" value="найти на сайте">
+				<input id="search_button" type="submit" value="">
+			</form>
+		</div>
+		<div id="header_navi">
+			<div class="header_navi_item">
+				<a href="#">Оплата и доставка</a>
+			</div>
+			<div class="header_navi_item">
+				<a href="#">Оптовикам</a>
+			</div>
+			<div class="header_navi_item">
+				<a href="#">Гарантии</a>
+			</div>
+			<div class="header_navi_item">
+				<a href="#">О нас / контакты</a>
+			</div>
+		</div>
+	</div>
+
+
+    <div id="wrapper">
+		<div id="content">
+            {% block content %}
+            {% endblock %}
+		</div>
+	</div>
+
+
+<div id="navigation">
+    {% block navigation %}
+        {% include "navigation.html" %}
+    {%  endblock %}
+</div>
+
+
+	<div id="extra">
+		<div id="contacts">
+			<div class="phone">+7 (4162) 554 366</div>
+   			<div class="icq_skype">
+   				<div class="icq_skype_img"><img src="/media/images/icq_icon.png" alt="icq"></div>
+   				<div class="icq_skype_num">256 953 08</div>
+   			</div>
+   			<div class="icq_skype">
+   				<div class="icq_skype_img" id="skype_img"><img src="/media/images/skype_icon.png" alt="skype"></div>
+   				<div class="icq_skype_num">optstuff_skype</div>
+   			</div>
+		</div>
+		<div id="price_subscr">
+			<p>Наш оптовый прайслист постоянно обновляется. Подпишитесь на обновления прайслиста по эл. почте!</p>
+            <div id="email_input">
+				<form action="#">
+					<input id="email_field" type="text" onblur="if (this.value=='')this.value='ваш e-mail'" onclick="if (this.value=='ваш e-mail')this.value=''" maxlength="40" value="ваш e-mail">
+					<input id="subscr_button" type="submit" value="">
+				</form>
+            </div>
+		</div>
+		<div id="kit">
+			<div id="kitimg">
+				<img src="/media/images/kit1.jpg" alt="Очень улыбчивый китайский бизнесмен">
+			</div>
+			<div id="subkit">
+				<p class="quote">Optstuff - наш надежный деловой партнер.</p>
+				<p class="author">Ван Вей</p>
+				<p class="author">бизнесмен, г.Пекин</p>
+			</div>
+		</div>
+
+		<div id="some_text_about">
+			<p>Основное направление деятельности компании OptStuff - оптовые поставки китайских телефонов. Мы занимаемся этим с 2005 года и хорошо знаем свое дело! За годы работы мы накопили большой опыт и надежные деловые связи. Мы работаем только с крупными заводами-производителями техники и электроники в Китае, поэтому мы всегда можем предложить Вам лучшие цены!</p>
+			<p>В 2010 году мы открываем розничный интернет-магазин чтобы качественная китайская электроника по самым низким ценам была доступна Вам уже сегодня!</p>
+			<p>И, как всегда, лучшие цены на китайские телефоны мы предлагаем крупным и малым оптовым покупателям!</p>
+		</div>
+	</div>
+
+	<div id="footer">
+  		<div id="footer_left">
+	  		<p>optStuff.ru &copy; 2010</p>
+  			<p>(4162) 554366, 550570</p>
+  		</div>
+  		<div id="footer_right">
+  			<img src="/media/images/logotypes.png" alt="Логотипы">
+  		</div>
+	</div>
+
+
+</body>

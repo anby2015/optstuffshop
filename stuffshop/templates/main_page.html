@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}
+    {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <h2> Новинки</h2>
+    {% for product in new_products %}
+        {% include 'catalog_entry.html' %}
+    {% endfor %}
+    <h2> Спецпредложения</h2>
+    {% for product in special_products %}
+        {% include 'catalog_entry.html' %}
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,23 @@
+{% load mptt_tags %}
+<div id="catalog">
+    {% recursetree nodes %}
+        {% if node.level == 0 %}
+            <a href="{{ node.get_absolute_url }}"><h2>{{ node.name }}</h2></a>
+        {% else %}
+            <li><a href="{{ node.get_absolute_url }}">{{ node.name }}</a></li>
+        {% endif %}
+            {% if not node.is_leaf_node %}
+                <ul>
+                    {{ children }}
+                </ul>
+            {% else %}
+                {% if node.id == menu_node_id %}
+                    <ul>
+                        {% for product in node.products.all %}
+                            <li><a href="{{ product.get_absolute_url }}">{{ product.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endif %}
+    {% endrecursetree %}
+</div>

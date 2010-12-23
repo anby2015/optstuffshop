@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+
+
+{% block title %}
+    {{ block.super }}
+{% endblock %}
+
+
+
+{% block scripts %}
+    <script type="text/javascript" src="/media/js/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript" src="/media/js/jquery.jcarousel.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/media/carousel/skin.css"/>
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            $('#product_images').jcarousel({
+                scroll: 1,
+                visible: 1
+            });
+        });
+    </script>
+{% endblock %}
+
+
+
+{% block navigation %}
+    {{ block.super }}
+    
+    <div class="divider"></div>
+    <div id="shipping_calc">
+        <form action="#">
+            <h2>Расчет доставки</h2>
+
+            <h3>Цена: <span class="red_mark">6130 руб.</span></h3>
+            <h4>Куда доставить:</h4>
+            <select id="destination">
+                <option value="1" selected>Нижний Тагил</option>
+                <option value="2">Охта</option>
+                <option value="3">Большекаменск</option>
+            </select>
+            <h4>Вариант доставки:</h4>
+            <select id="shipping_option">
+                <option value="1" selected>EMS</option>
+                <option value="2">Почта России</option>
+            </select>
+
+            <h3>Доставка: <span class="red_mark">808,60 руб.</span></h3>
+            <h4>Вариант оплаты:</h4>
+            <select id="payment_option"
+                    onchange="if (this.value=='2') document.getElementById('cod_warning').style.display='none'; if (this.value=='1') document.getElementById('cod_warning').style.display='block'">
+                <option value="1" selected>Наложенный платеж</option>
+                <option value="2">Предоплата</option>
+            </select>
+
+            <div id="cod_warning">
+                <p><span
+                        class="red_mark">Внимание! Почта России взимает сбор за перевод платежа с получателя посылки!</span>
+                </p>
+
+                <h3>Сбор: <span class="red_mark">384,20 руб.</span></h3>
+
+                <p>При предоплате любые комиссии за платеж мы берем на себя, а Вы экономите <span
+                        class="red_mark">6%</span> (384,20 руб.)</p>
+            </div>
+            <input type="submit" value="">
+        </form>
+    </div>
+{% endblock %}
+
+
+
+{% block content %}
+    <div id="product_details_header">
+        <h2>{{ product.title }}</h2>
+
+        <div id="order_button_top">
+            <a href="#"><img src="/media/images/green_button.png" alt="Заказать!"></a>
+        </div>
+        <div id="price_top">{{ product.price }} руб.</div>
+    </div>
+    <div id="product_images_container">
+        <ul id="product_images" class="jcarousel-skin-tango">
+            {% for product_image in product.images.all %}
+                <li><img src="{{ product_image.image.url }}"></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div id="product_desc">
+        {{ qwe }}
+        {{ product.description|safe }}
+    </div>
+    </div>
+    
+{% endblock %}
