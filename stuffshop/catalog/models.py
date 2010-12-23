@@ -43,7 +43,7 @@ class Product(InheritanceCastModel):
     is_special=models.BooleanField(default=False,verbose_name='Спец. акция')
     date = models.DateField(auto_now_add=True)
     description = models.TextField(verbose_name='Описание')
-
+    weight = 0
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(Product,self).save(*args, **kwargs)
@@ -72,7 +72,7 @@ class Phone(Product):
     has_gps = models.BooleanField(default=False,verbose_name='Наличие GPS')
     has_tv = models.BooleanField(default=False)
     features = models.CharField(max_length=80,null=True, verbose_name='особенности(разделять запятыми)')
-
+    weight = "0.25"
     def get_short_description(self):
         list = []
         if self.num_of_sim == 2:
