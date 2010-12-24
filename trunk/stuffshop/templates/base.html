@@ -4,13 +4,17 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
 		<link rel="Shortcut Icon" href="media/favicon.ico">
 		<link rel="stylesheet" type="text/css" href="/media/main.css">
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+        <script type="text/javascript" src="/media/js/jquery.jcarousel.min.js"></script>
+        <script type="text/javascript" src="/media/js/jquery.cookie.js"></script>
+        <link rel="stylesheet" type="text/css" href="/media/carousel/skin.css"/>
+        <script type="text/javascript" src="/media/js/catalog.js"></script>
 		<!--[if lte IE 7]><style type="text/css">.product {display: inline}</style><![endif]-->
 		    <title>
                 {% block title %}
                 Китайские телефоны и электроника из Китая - optStuff.ru
                 {% endblock %}
             </title>
-        {% block scripts %}{% endblock %}
 	</head>
 
 <body>
@@ -23,8 +27,8 @@
 			<img src="/media/images/optstuff_logo.png" alt="Китайские телефоны optstuff.ru">
 		</div>
 		<div id="header_search">
-			<form action="#">
-				<input id="search_field" type="text" onblur="if (this.value=='')this.value='найти на сайте'" onclick="if (this.value=='найти на сайте')this.value=''" maxlength="20" value="найти на сайте">
+			<form action="/search/">
+				<input id="search_field" name="search" type="text" onblur="if (this.value=='')this.value='найти на сайте'" onclick="if (this.value=='найти на сайте')this.value=''" maxlength="20" value="найти на сайте">
 				<input id="search_button" type="submit" value="">
 			</form>
 		</div>
@@ -55,8 +59,11 @@
 
 <div id="navigation">
     {% block navigation %}
-        {% include "navigation.html" %}
-    {%  endblock %}
+        {% include "blocks/navigation.html" %}
+        {% if product %}
+                {% include "blocks/shipping_calc.html" %}
+        {% endif %}
+    {% endblock %}
 </div>
 
 
@@ -76,7 +83,6 @@
 
 
         <div id="cart">
-			<h2>Ваша корзина пуста</h2>
 		</div>
 
 

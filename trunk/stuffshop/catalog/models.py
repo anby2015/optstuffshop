@@ -57,9 +57,12 @@ class Product(InheritanceCastModel):
     def get_short_description(self):
         return []
 
+    def get_price(self):
+        return self.price*2
     @models.permalink
     def get_absolute_url(self):
         return ('catalog.views.details',[self.slug,])
+
 
 
 
@@ -72,7 +75,7 @@ class Phone(Product):
     has_gps = models.BooleanField(default=False,verbose_name='Наличие GPS')
     has_tv = models.BooleanField(default=False)
     features = models.CharField(max_length=80,null=True, verbose_name='особенности(разделять запятыми)')
-    weight = "0.25"
+    weight = 0.25
     def get_short_description(self):
         list = []
         if self.num_of_sim == 2:
