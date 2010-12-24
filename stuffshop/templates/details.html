@@ -7,107 +7,6 @@
 {% endblock %}
 
 
-
-{% block scripts %}
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
-    <script type="text/javascript" src="/media/js/jquery.jcarousel.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/media/carousel/skin.css"/>
-    <script type="text/javascript">
-        //карусель изображений
-        $(document).ready(function() {
-            $('#product_images').jcarousel({
-                scroll: 1,
-                visible: 1
-            });
-            //получаем список городв
-            $.getJSON("http://emspost.ru/api/rest/?method=ems.get.locations&callback=?&type=russia&plain=true",
-                function(data){
-                    $.each(data.rsp.locations, function(i,city){
-                        row = '<option value="' + city.value + '">' + city.name + '</option>'
-                        $("#destination").append(row);
-                    });
-                }
-            );
-            $("#destination").attr("disabled","");
-        });
-
-        //высчитываем стоимость достваки
-        function calc_shipping()
-        {
-            from = "city--blagoveshhensk"
-            to = $("#destination :selected").val();
-            weight = ($("#weight").html());
-            $.getJSON("http://emspost.ru/api/rest?callback=?&method=ems.calculate",
-                {
-                    from: from,
-                    to: to,
-                    weight: weight
-                },
-                function(data) {
-                    $("#shipping_cost").html(data.rsp.price + ' руб.');
-                    $("#shipping_time").html(data.rsp.term.min + '-' + data.rsp.term.max +  'дней');
-
-                    price = parseFloat(($("#price_top").html()));
-                    $("#shipping_fee").html(price*0.06+ ' руб.');
-                }
-            );
-        }
-        add_to_cart(){
-            
-
-        }
-        
-    
-    </script>
-{% endblock %}
-
-
-
-{% block navigation %}
-    {{ block.super }}
-
-    <div class="divider"></div>
-    <div id="shipping_calc">
-        <form action="#">
-            <h2>Расчет доставки</h2>
-
-            <h3>Цена: <span class="red_mark">6130 руб.</span></h3>
-            <h4>Куда доставить:</h4>
-            <select id="destination" onchange="calc_shipping()">
-            </select>
-            <!--
-            <h4>Вариант доставки:</h4>
-            <select id="shipping_option">
-                <option value="1" selected>EMS</option>
-                <option value="2">Почта России</option>
-            </select>
-            -->
-            <h3>Доставка: <span id="shipping_cost" class="red_mark"></span></h3>
-            <h3>Сроки: <span id="shipping_time" class="red_mark"></span></h3>
-            <h4>Вариант оплаты:</h4>
-            <select id="payment_option"
-                    onchange="if (this.value=='2') document.getElementById('cod_warning').style.display='none'; if (this.value=='1') document.getElementById('cod_warning').style.display='block'">
-                <option value="1" selected>Наложенный платеж</option>
-                <option value="2">Предоплата</option>
-            </select>
-
-            <div id="cod_warning">
-                <p><span
-                        class="red_mark">Внимание! Почта России взимает сбор за перевод платежа с получателя посылки!</span>
-                </p>
-
-                <h3>Сбор: <span id="shipping_fee" class="red_mark">384,20 руб.</span></h3>
-
-                <p>При предоплате любые комиссии за платеж мы берем на себя, а Вы экономите <span
-                        class="red_mark">6%</span> (384,20 руб.)</p>
-            </div>
-            <input type="submit" value="">
-        </form>
-    </div>
-{% endblock %}
-
-
-
 {% block content %}
     <div id="product_id" style="display:none;">{{ product.id }}</div>
     <div id="weight" style="display:none;">{{ product.cast.weight }}</div>
@@ -117,8 +16,8 @@
         <div class="button_top">
             <a href="#"><img src="/media/images/green_button.png" alt="Заказать!"></a>
         </div>
-        <div class="button_top">
-            <a href="#"><img src="/media/images/cart_add.png" onclick="add_to_cart()" alt="В корзину"></a>
+        <div id="add_to_cart" class="button_top">
+            <a href="#"><img src="/media/images/cart_add.png"  alt="В корзину"></a>
         </div>
         <div id="price_top">{{ product.price }} руб.</div>
     </div>

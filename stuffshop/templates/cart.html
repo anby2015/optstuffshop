@@ -1,0 +1,28 @@
+{% load thumbnail %}
+{% if cart_list %}
+    <h2>Корзина</h2>    
+    {% for el in cart_list %}
+        <div class="cart_item" id="{{ el.product.id }}">
+            <div class="cart_item_del">
+                <a href="#">
+                    <a href="#"><img src="/media/images/close.png" alt="Убрать из корзины"></a>
+               </a>
+            </div>
+            <div class="cart_item_image">
+                {% thumbnail el.product.get_main_image.image "36" as im %}
+                    <a href="#"><img src="{{ im.url }}" alt="{{ el.product.title }}"></a>
+                {% endthumbnail %}
+            </div>
+            <div class="cart_item_desc">
+                <h3>{{ el.product.title }}:{{ el.count }}</h3>
+                <p>{{ el.product.price }} руб.</p>
+            </div>
+    </div>
+    {% endfor %}
+    <h5>Товаров на сумму: <span id="shipping_cost" class="red_mark">{{ product_price }} руб.</span></h5>
+    <h5>Доставка: <span id="shipping_cost" class="red_mark">{{ shipping_price }} руб.</span></h5>
+    <h3>Всего: <span id="shipping_cost" class="red_mark">{{ total_price }} руб.</span></h3>
+{%  else %}
+    <h2>Ваша корзина пуста</h2>
+{% endif %}
+    

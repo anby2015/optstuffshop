@@ -9,7 +9,8 @@ urlpatterns = patterns('',
     (r'^$',main_page),
     url(r'^catalog/(\d+)/$', 'catalog.views.catalog'),
     url(r'^details/([-\w]+)/$', 'catalog.views.details'),
-
+    (r'^ajax/$', ajax),
+    (r'^search/$', search),
     # Uncomment the admin/doc line below to enable admin documentation:
     # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     #(r'^tinymce/', include('tinymce.urls')), what's the reason?

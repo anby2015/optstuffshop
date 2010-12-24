@@ -1,0 +1,35 @@
+<div class="divider"></div>
+<div id="shipping_calc">
+    <form action="#">
+        <h2>Расчет доставки</h2>
+
+        <h3>Цена: <span class="red_mark">6130 руб.</span></h3>
+        <h4>Куда доставить:</h4>
+        <select id="destination" onchange="calc_shipping()">
+        </select>
+        <!--
+        <h4>Вариант доставки:</h4>
+        <select id="shipping_option">
+            <option value="1" selected>EMS</option>
+            <option value="2">Почта России</option>
+        </select>
+        -->
+        <h3>Доставка: <span id="shipping_cost" class="red_mark"></span></h3>
+        <h3>Сроки: <span id="shipping_time" class="red_mark"></span></h3>
+        <h4>Вариант оплаты:</h4>
+        <select id="payment_option">
+            <option value="1" selected>Наложенный платеж</option>
+            <option value="2">Предоплата</option>
+        </select>
+
+        <div id="cod_warning">
+            <p>
+                <span class="red_mark">Внимание! Почта России взимает сбор за перевод платежа с получателя посылки!</span>
+            </p>
+            <h3>Сбор: <span id="shipping_fee" class="red_mark">384,20 руб.</span></h3>
+
+            <p>При предоплате любые комиссии за платеж мы берем на себя, а Вы экономите <span class="red_mark">6%</span> (384,20 руб.)</p>
+        </div>
+        <input type="submit" value="">
+    </form>
+</div>
