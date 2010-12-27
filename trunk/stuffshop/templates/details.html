@@ -13,9 +13,7 @@
     <div id="product_details_header">
         <h2>{{ product.title }}</h2>
 
-        <div class="button_top">
-            <a href="#"><img src="/media/images/green_button.png" alt="Заказать!"></a>
-        </div>
+
         <div id="add_to_cart" class="button_top">
             <a href="#"><img src="/media/images/cart_add.png"  alt="В корзину"></a>
         </div>
@@ -28,7 +26,7 @@
             {% endfor %}
         </ul>
     </div>
-    <div id="product_desc">
+    <div id="product_description">
         {{ qwe }}
         {{ product.description|safe }}
     </div>
