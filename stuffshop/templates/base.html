@@ -64,6 +64,16 @@
                 {% include "blocks/shipping_calc.html" %}
         {% endif %}
     {% endblock %}
+    <div class="divider"></div>
+    <div id="price_subscr">
+			<p>Наш оптовый прайслист постоянно обновляется. Подпишитесь на обновления прайслиста по эл. почте!</p>
+            <div id="email_input">
+				<form action="#">
+					<input id="email_field" type="text" onblur="if (this.value=='')this.value='ваш e-mail'" onclick="if (this.value=='ваш e-mail')this.value=''" maxlength="40" value="ваш e-mail">
+					<input id="subscr_button" type="submit" value="">
+				</form>
+            </div>
+		</div>
 </div>
 
 
@@ -87,15 +97,7 @@
 
 
 
-		<div id="price_subscr">
-			<p>Наш оптовый прайслист постоянно обновляется. Подпишитесь на обновления прайслиста по эл. почте!</p>
-            <div id="email_input">
-				<form action="#">
-					<input id="email_field" type="text" onblur="if (this.value=='')this.value='ваш e-mail'" onclick="if (this.value=='ваш e-mail')this.value=''" maxlength="40" value="ваш e-mail">
-					<input id="subscr_button" type="submit" value="">
-				</form>
-            </div>
-		</div>
+
 		<div id="kit">
 			<div id="kitimg">
 				<img src="/media/images/kit1.jpg" alt="Очень улыбчивый китайский бизнесмен">

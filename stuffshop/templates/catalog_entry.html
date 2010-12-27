@@ -3,7 +3,7 @@
 <div class="product">
     <div class="product_img">
         <a href="{{ product.get_absolute_url }}">
-            {% thumbnail product.get_main_image.image "90" as im %}
+            {% thumbnail product.get_main_image.image "140" as im %}
             <img src="{{ im.url }}" alt="{{ product.title }}">
             {% endthumbnail %}
         </a>
