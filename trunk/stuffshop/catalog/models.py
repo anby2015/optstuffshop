@@ -74,7 +74,7 @@ class Phone(Product):
     has_touchscreen = models.BooleanField(default=False,verbose_name='Наличие Touchscreen')
     has_gps = models.BooleanField(default=False,verbose_name='Наличие GPS')
     has_tv = models.BooleanField(default=False)
-    features = models.CharField(max_length=80,null=True, verbose_name='особенности(разделять запятыми)')
+    features = models.CharField(max_length=80,null=True,blank=True, verbose_name='особенности(разделять запятыми)')
     weight = 0.25
     def get_short_description(self):
         list = []
