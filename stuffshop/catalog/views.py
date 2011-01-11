@@ -45,7 +45,7 @@ def ajax(request):
         for el in cart_list:
             product_price += el['product'].cast().get_price()*el['count']
             weight += el['product'].cast().weight*el['count']
-        shipping_price = get_delivery_param(request.COOKIES['city'],weight)[0]
+        shipping_price = 0#get_delivery_param(request.COOKIES['city'],weight)[0]
         return direct_to_template(request, 'cart.html',{
             'cart_list': cart_list,
             'product_price':product_price,
@@ -64,7 +64,10 @@ def ajax(request):
         return HttpResponse(new_id)
     if(request.GET['action']=='cart_del'):
         product_id = request.GET['product_id']
-        cart[product_id] -= 1
+        if(cart[product_id]<=1):
+            cart[product_id] = 0
+        else:
+            cart[product_id] -= 1
         request.session['cart'] = cart
         return HttpResponse('ok')
 
