@@ -39,7 +39,8 @@ class Product(InheritanceCastModel):
     title = models.CharField(max_length=30,verbose_name='Название')
     slug = models.SlugField(editable=False,unique=True)
     menu_node_id = models.ForeignKey('MenuNode', null=True, blank=True, related_name='products',verbose_name='Раздел')
-    price = models.DecimalField(default=0,max_digits=8,decimal_places=2,verbose_name='Цена')
+    price = models.DecimalField(default=0,max_digits=8,decimal_places=2,verbose_name='Закупочная цена')
+    special_price = models.DecimalField(null=True,blank=True,max_digits=8,decimal_places=2,verbose_name='спец. цена')
     is_special=models.BooleanField(default=False,verbose_name='Спец. акция')
     date = models.DateField(auto_now_add=True)
     description = models.TextField(verbose_name='Описание')
@@ -58,6 +59,8 @@ class Product(InheritanceCastModel):
         return []
 
     def get_price(self):
+        if self.special_price:
+            return self.special_price
         return self.price*2
     @models.permalink
     def get_absolute_url(self):
