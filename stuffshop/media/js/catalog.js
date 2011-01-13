@@ -38,13 +38,18 @@ function cart_show(){
     function(data) {
         $("#cart").html(data);
         $(".cart_item_del").click(function(){
-            id = parseInt($(this).parent().attr('id'));
+            id = parseInt($(this).parent().parent().attr('id'));
             cart_del(id);
         });
+        $(".cart_item_add").click(function(){
+            id = parseInt($(this).parent().parent().attr('id'));
+            cart_add(id);
+        });
+
     }
     );
 }
-function cart_add(){
+function cart_add_current(){
         id =parseInt($("#product_id").html());
         $.get("/ajax/", {
             action: "cart_add",
@@ -58,6 +63,20 @@ function cart_add(){
         }
         )
 }
+
+function cart_add(id){
+    $.get("/ajax/", {
+        action: "cart_add",
+        product_id: id
+    },
+    function(data) {
+        cart_show();
+    }
+    );
+}
+
+
+
 function cart_del(id){
     $.get("/ajax/", {
         action: "cart_del",
@@ -82,7 +101,7 @@ $(document).ready(function() {
 
    //высчитываем стоимость достваки
     $("#destination").change(calc_shipping)
-    $("#add_to_cart").click(cart_add);
+    $("#add_to_cart").click(cart_add_current);
     
     $("#payment_option").change(function(){
         if ($(this).val()=='2')

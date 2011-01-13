@@ -3,9 +3,9 @@
     <h2>Корзина</h2>    
     {% for el in cart_list %}
         <div class="cart_item" id="{{ el.product.id }}">
-            <div class="cart_item_del">
-                <a href="#"><img src="/media/images/cart_plus.png" alt="Добавить"></a>
-                <a href="#"><img src="/media/images/cart_minus.png" alt="Удалить"></a>
+            <div class="cart_item_buttons">
+                <img class="cart_item_add" src="/media/images/cart_plus.png" alt="Добавить">
+                <img class="cart_item_del" src="/media/images/cart_minus.png" alt="Удалить">
             </div>
             <div class="cart_item_image">
                 {% thumbnail el.product.get_main_image.image "60" as im %}
