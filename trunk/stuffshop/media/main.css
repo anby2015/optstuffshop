@@ -68,7 +68,7 @@ div.icq_skype {height: 40px;}
 .cart_item {clear: both; width: 240px; min-height: 60px;}
 .cart_item_image {width: 60px; height: 60px; float:left;}
 .cart_item_desc {width: 156px; margin: 0 24px 0 60px; padding: 3px 0 0 0;}
-.cart_item_del {position: relative; float: right; width: 24px; height: 24px; line-height: 24px; }
+.cart_item_del {position: relative; float: right; width: 24px; line-height: 24px; padding: 5px 0 0 0;}
 .cart_item_desc h3 {margin: 0; padding: 0;}
 .cart_item_desc p {margin: 0; padding: 0;}
 #cart_total {clear: both; padding: 5px 0 0 10px;}

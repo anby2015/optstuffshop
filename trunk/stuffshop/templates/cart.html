@@ -4,9 +4,8 @@
     {% for el in cart_list %}
         <div class="cart_item" id="{{ el.product.id }}">
             <div class="cart_item_del">
-                <a href="#">
-                    <a href="#"><img src="/media/images/close.png" alt="Убрать из корзины"></a>
-               </a>
+                <a href="#"><img src="/media/images/cart_plus.png" alt="Добавить"></a>
+                <a href="#"><img src="/media/images/cart_minus.png" alt="Удалить"></a>
             </div>
             <div class="cart_item_image">
                 {% thumbnail el.product.get_main_image.image "60" as im %}
