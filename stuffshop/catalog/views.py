@@ -5,13 +5,16 @@ from catalog.models import *
 from django.views.generic.simple import direct_to_template
 from django import template
 from catalog.utils import get_cart, get_delivery_param
+import random
 
 register = template.Library()
 
+
 def main_page(request):
+    buddy = ChineeseBuddy.objects.get(id=random.randint(1,ChineeseBuddy.objects.count()))
     new_products = Product.objects.all().order_by('date')[:6]
     special_products = Product.objects.filter(is_special=True)[:6]
-    return direct_to_template(request, 'main_page.html', {'new_products': new_products, 'special_products':special_products})
+    return direct_to_template(request, 'main_page.html', {'new_products': new_products, 'special_products':special_products, 'buddy':buddy})
 
 def details(request, product_slug):
     product = Product.objects.get(slug=product_slug)
@@ -50,7 +53,7 @@ def ajax(request):
             'cart_list': cart_list,
             'product_price':product_price,
             'shipping_price':shipping_price,
-            'total_price':int(shipping_price)+int(product_price)
+            'total_price':int(shipping_price)+int(product_price),
             })
     if(request.GET['action']=='cart_add'):
         product_id = request.GET['product_id']

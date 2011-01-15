@@ -1,11 +1,11 @@
 /*Layout*/
-body {padding: 0px; margin: 0px; min-width: 1024px;}
+body {padding: 0; margin: 0; min-width: 1024px;}
 ul, li {margin: 0; padding: 0;}
 input {border: 0; margin: 0; padding: 0;}
 .divider {height: 5px;  margin: 30px 10px 30px 30px}
 #topline {width: 100%; height: 40px;}
 #header {height: 44px; margin: 40px 0 20px 0;}
-#header_logo {float: left; width: 220px; height: 40px; margin: 2px 30px 0px 60px;}
+#header_logo {float: left; width: 220px; height: 40px; margin: 2px 30px 0 60px;}
 #header_search {float: left; line-height: 28px; margin: 8px 0 0 0;}
 #header_search form {margin: 0; padding: 0; border: 0 none; background: url("images/search_background.png") no-repeat;}
 #header_navi {float: right; margin: 0 20px 0 0;}
@@ -25,10 +25,10 @@ input {border: 0; margin: 0; padding: 0;}
 #catalog {margin: 0 10px 0 30px}
 #catalog ul {margin: 0 0 0 20px;}
 #catalog li {margin: 5px 0;}
-#extra #kitimg {width: 231px; height: 364px; margin: 0px auto;}
+#extra #kitimg {width: 231px; height: 364px; margin: 0 auto;}
 #extra #subkit {width: 280px; padding: 0 0 10px 0;}
 #extra #subkit p.quote {padding: 5px 10px;}
-#extra #subkit p.author {padding: 0px 10px; text-align: right;}
+#extra #subkit p.author {padding: 0 10px; text-align: right;}
 #price_subscr {margin: 0 10px 0 30px;}
 #email_input form {margin: 0; padding: 0; border: 0 none; background: url("images/email_background.png") no-repeat;}
 #email_field {background: none; width: 136px; height: 25px; border: 0; margin: 0; padding: 0 0 0 5px; vertical-align: middle;}
@@ -56,18 +56,19 @@ div.icq_skype {height: 40px;}
 #product_images_container {width: 535px; margin: 0 auto;}
 #product_description {padding: 0 0 20px 0; word-spacing: normal;}
 #product_description p {margin: 0;}
-#shipping_calc {padding: 0 20px;}
-#shipping_calc h2 {margin: 15px 0;}
-#shipping_calc h3 {margin: 10px 0;}
-#shipping_calc h4 {margin: 5px 0 5px 5px;}
-#shipping_calc select {margin: 0 0 0 5px; width: 200px;}
-#shipping_calc p {margin: 5px 0 5px 10px;}
-#shipping_calc input {width: 117px; height: 29px; margin: 10px 0 0 50px; background: url("images/green_button.png") no-repeat;}
+#shipping_calc, #product_shipping_calc {padding: 0 20px;}
+#shipping_calc h2, #product_shipping_calc h2 {margin: 15px 0;}
+#shipping_calc h3, #product_shipping_calc h3 {margin: 10px 0;}
+#shipping_calc h4, #product_shipping_calc h4 {margin: 5px 0 5px 5px;}
+#shipping_calc select, #product_shipping_calc select {margin: 0 0 0 5px; width: 200px;}
+#shipping_calc p, #product_shipping_calc p {margin: 5px 0 5px 10px;}
+#shipping_calc input, #product_shipping_calc input {width: 117px; height: 29px; margin: 10px 0 0 50px; background: url("images/green_button.png") no-repeat;}
 #cart {padding: 0 20px;}
 #cart h2 {padding: 0; margin: 15px 0;}
+#cart h3 {margin: 10px 0;}
 .cart_item {clear: both; width: 240px; min-height: 60px;}
 .cart_item_image {width: 60px; height: 60px; float:left;}
-.cart_item_desc {width: 156px; margin: 0 24px 0 60px; padding: 3px 0 0 0;}
+.cart_item_desc {width: 156px; margin: 0 24px 0 60px; padding: 10px 0 0 0;}
 .cart_item_buttons {position: relative; float: right; width: 24px; line-height: 24px; padding: 5px 0 0 0;}
 .cart_item_desc h3 {margin: 0; padding: 0;}
 .cart_item_desc p {margin: 0; padding: 0;}
@@ -108,12 +109,13 @@ div.icq_skype {font-size: 21px; color: #747D82;}
 #product_description {font-size: 14px; text-indent: 30px;}
 .red_mark {color: #FF0000;}
 #price_top {color: #FF0000; font-size: 18px; font-weight: bold;}
-#shipping_calc h2 {font-size: 18px; color: #0071BC; font-weight: normal;}
-#shipping_calc h3 {font-size: 16px; font-weight: normal;}
-#shipping_calc h4 {font-size: 14px; font-weight: normal;}
-#shipping_calc p {font-size: 11px;}
-#shipping_calc input {cursor: pointer;}
+#shipping_calc h2, #product_shipping_calc h2 {font-size: 18px; color: #0071BC; font-weight: normal;}
+#shipping_calc h3, #product_shipping_calc h3 {font-size: 16px; font-weight: normal;}
+#shipping_calc h4, #product_shipping_calc h4 {font-size: 14px; font-weight: normal;}
+#shipping_calc p, #product_shipping_calc p {font-size: 11px;}
+#shipping_calc input, #product_shipping_calc input {cursor: pointer;}
 #cart h2 {font-size: 18px; color: #0071BC; font-weight: normal;}
+#cart h3 {font-size: 16px; font-weight: normal;}
 .cart_item_desc h3 {font-size: 12px; font-weight: normal;}
 .cart_item_desc p {font-size: 12px; font-weight: normal; color: #FF0000;}
 .cart_item {border-bottom: 1px solid #D6D6D6}

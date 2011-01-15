@@ -24,7 +24,9 @@
 	</div>
 	<div id="header">
 		<div id="header_logo">
-			<img src="/media/images/optstuff_logo.png" alt="Китайские телефоны optstuff.ru">
+			{% block logo %}
+            <a href="/"><img src="/media/images/optstuff_logo.png" alt="Китайские телефоны optstuff.ru"></a>
+            {% endblock %}
 		</div>
 		<div id="header_search">
 			<form action="/search/">
@@ -89,7 +91,8 @@
 
 
 
-        <div id="cart">
+        <div id="cart_wrap">
+
 		</div>
         {% if product %}
                 {% include "blocks/shipping_calc.html" %}
@@ -99,12 +102,12 @@
 
 		<div id="kit">
 			<div id="kitimg">
-				<img src="/media/images/kit1.jpg" alt="Очень улыбчивый китайский бизнесмен">
+				<img src="{{ buddy.image.url }}" alt="{{ buddy.name }}">
 			</div>
 			<div id="subkit">
-				<p class="quote">Optstuff - наш надежный деловой партнер.</p>
-				<p class="author">Ван Вей</p>
-				<p class="author">бизнесмен, г.Пекин</p>
+				<p class="quote">{{ buddy.quote }}</p>
+				<p class="author">{{ buddy.name }}</p>
+				<p class="author">{{ buddy.position }}</p>
 			</div>
 		</div>
 
