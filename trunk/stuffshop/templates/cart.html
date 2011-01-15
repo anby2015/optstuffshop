@@ -1,6 +1,9 @@
 {% load thumbnail %}
+
 {% if cart_list %}
-    <h2>Корзина</h2>    
+    <script type="text/javascript">$("#product_shipping_calc").css("display","none");</script>
+    <div id="cart">
+    <h2>Корзина</h2>
     {% for el in cart_list %}
         <div class="cart_item" id="{{ el.product.id }}">
             <div class="cart_item_buttons">
@@ -9,19 +12,54 @@
             </div>
             <div class="cart_item_image">
                 {% thumbnail el.product.get_main_image.image "60" as im %}
-                    <a href="#"><img src="{{ im.url }}" alt="{{ el.product.title }}"></a>
+                    <a href="{{ el.product.get_absolute_url }}"><img src="{{ im.url }}" alt="{{ el.product.title }}"></a>
                 {% endthumbnail %}
             </div>
             <div class="cart_item_desc">
-                <h3>{{ el.product.title }}:{{ el.count }}</h3>
-                <p>{{ el.product.price }} руб.</p>
+                <h3><a href="{{ el.product.get_absolute_url }}">{{ el.product.title }}</a></h3>
+                <p>{{ el.count }} x {{ el.product.get_price }} руб.</p>
             </div>
+        </div>
+    {% endfor %}
+        <h3>Товаров на сумму: <span class="red_mark">{{ product_price }} руб.</span></h3>
     </div>
-    {% endfor %} 
-    <h5>Товаров на сумму: <span id="shipping_cost" class="red_mark">{{ product_price }} руб.</span></h5>
-    <h5>Доставка: <span id="shipping_cost" class="red_mark">{{ shipping_price }} руб.</span></h5>
-    <h3>Всего: <span id="shipping_cost" class="red_mark">{{ total_price }} руб.</span></h3>
+    <div id="shipping_calc">
+        <form action="#">
+            <h2>Расчет доставки</h2>
+            <h4>Куда доставить:</h4>
+            <select id="destination" onchange="calc_shipping()">
+            </select>
+            <!--
+            <h4>Вариант доставки:</h4>
+            <select id="shipping_option">
+                <option value="1" selected>EMS</option>
+                <option value="2">Почта России</option>
+            </select>
+            -->
+            <h3>Сроки: <span id="shipping_time" class="red_mark"></span></h3>
+            <h4>Вариант оплаты:</h4>
+            <select id="payment_option">
+                <option value="1" selected>Наложенный платеж</option>
+                <option value="2">Предоплата</option>
+            </select>
+
+            <div id="cod_warning">
+                <p>
+                    <span class="red_mark">Внимание! Почта России взимает сбор за перевод платежа с получателя посылки!</span>
+                </p>
+                <h3>Сбор: <span id="shipping_fee" class="red_mark">384,20 руб.</span></h3>
+
+                <p>При предоплате любые комиссии за платеж мы берем на себя, а Вы экономите <span class="red_mark">6%</span> (384,20 руб.)</p>
+            </div>
+            <h3>Доставка: <span id="shipping_cost" class="red_mark">{{ shipping_price }} руб.</span></h3>
+            <h3>Всего: <span class="red_mark">{{ total_price }} руб.</span></h3>
+            <input type="submit" value="">
+        </form>
+    </div>
+
 {%  else %}
-    <h2>Ваша корзина пуста</h2>
+    <script type="text/javascript">$("#product_shipping_calc").css("display","block");</script>
+    <div id="cart">
+        <h2>Ваша корзина пуста</h2>
+    </div>
 {% endif %}
-    

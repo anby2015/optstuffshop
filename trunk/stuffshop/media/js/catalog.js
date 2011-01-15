@@ -36,7 +36,7 @@ function cart_show(){
         action: "cart_show"
     },
     function(data) {
-        $("#cart").html(data);
+        $("#cart_wrap").html(data);
         $(".cart_item_del").click(function(){
             id = parseInt($(this).parent().parent().attr('id'));
             cart_del(id);
@@ -99,7 +99,7 @@ $(document).ready(function() {
     cart_show();
     show_destenation_list();
 
-   //высчитываем стоимость достваки
+   //высчитываем стоимость доставки
     $("#destination").change(calc_shipping)
     $("#add_to_cart").click(cart_add_current);
     
