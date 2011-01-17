@@ -15,7 +15,7 @@ input {border: 0; margin: 0; padding: 0;}
 #sub_header {position: absolute; top: 80px; left: 40px;}
 #wrapper{float:left; width:100%;}
 #content{margin: 0 280px 0 210px; word-spacing: -5px;}
-#content h2 {margin: 15px 20px;}
+#content h2 {margin: 15px 20px; word-spacing: 0;}
 #navigation{float:left;width:210px;margin-left:-100%}
 #extra{float:left;width:280px;margin-left:-280px}
 #footer{clear:both;width:100%; height: 65px; margin: 30px 0;}
@@ -65,7 +65,7 @@ div.icq_skype {height: 40px;}
 #shipping_calc input, #product_shipping_calc input {width: 117px; height: 29px; margin: 10px 0 0 50px; background: url("images/green_button.png") no-repeat;}
 #cart {padding: 0 20px;}
 #cart h2 {padding: 0; margin: 15px 0;}
-#cart h3 {margin: 10px 0;}
+#cart h3 {margin: 0 0;}
 .cart_item {clear: both; width: 240px; min-height: 60px;}
 .cart_item_image {width: 60px; height: 60px; float:left;}
 .cart_item_desc {width: 156px; margin: 0 24px 0 60px; padding: 10px 0 0 0;}
