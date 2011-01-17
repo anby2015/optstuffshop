@@ -89,6 +89,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.media",
     "django.core.context_processors.request",
     'catalog.context_processors.show_navigation',
+    'buddy_face.context_processors.show_buddyface',
 )
 
 TINYMCE_DEFAULT_CONFIG={

@@ -68,7 +68,3 @@ admin.site.unregister(FlatPage)
 admin.site.register(FlatPage, FlatPageAdmin)
 
 
-class ChineeseBuddyAdmin(admin.ModelAdmin):
-    list_display = ('name','position','quote','image')
-    
-admin.site.register(ChineeseBuddy, ChineeseBuddyAdmin)
