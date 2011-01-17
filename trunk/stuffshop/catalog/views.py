@@ -17,19 +17,22 @@ def main_page(request):
     return direct_to_template(request, 'main_page.html', {'new_products': new_products, 'special_products':special_products, 'buddy':buddy})
 
 def details(request, product_slug):
+    buddy = ChineeseBuddy.objects.get(id=random.randint(1,ChineeseBuddy.objects.count()))
     product = Product.objects.get(slug=product_slug)
     menu_node_id = product.menu_node_id.id
-    return direct_to_template(request, 'details.html', {'product': product, 'menu_node_id':menu_node_id})
+    return direct_to_template(request, 'details.html', {'product': product, 'menu_node_id':menu_node_id, 'buddy':buddy})
 
 def catalog(request, id):
+    buddy = ChineeseBuddy.objects.get(id=random.randint(1,ChineeseBuddy.objects.count()))
     products = Product.objects.filter(menu_node_id=id)
     title = MenuNode.objects.get(id=id).name
-    return direct_to_template(request, 'catalog.html', {'menu_node_id':int(id),'products':products,'title':title})
+    return direct_to_template(request, 'catalog.html', {'menu_node_id':int(id),'products':products,'title':title, 'buddy':buddy})
 
 def search(request):
+    buddy = ChineeseBuddy.objects.get(id=random.randint(1,ChineeseBuddy.objects.count()))    
     products = Product.objects.filter(title__contains=request.GET['search'])
     title = u'Поиск по запросу: %s' % (request.GET['search'])
-    return direct_to_template(request, 'catalog.html', {'products':products,'title':title})
+    return direct_to_template(request, 'catalog.html', {'products':products,'title':title, 'buddy':buddy})
 
 
 
