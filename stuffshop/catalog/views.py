@@ -5,34 +5,31 @@ from catalog.models import *
 from django.views.generic.simple import direct_to_template
 from django import template
 from catalog.utils import get_cart, get_delivery_param
-import random
+
 
 register = template.Library()
 
 
 def main_page(request):
-    buddy = ChineeseBuddy.objects.get(id=random.randint(1,ChineeseBuddy.objects.count()))
     new_products = Product.objects.all().order_by('date')[:6]
     special_products = Product.objects.filter(is_special=True)[:6]
-    return direct_to_template(request, 'main_page.html', {'new_products': new_products, 'special_products':special_products, 'buddy':buddy})
+    return direct_to_template(request, 'main_page.html', {'new_products': new_products, 'special_products':special_products})
 
 def details(request, product_slug):
-    buddy = ChineeseBuddy.objects.get(id=random.randint(1,ChineeseBuddy.objects.count()))
     product = Product.objects.get(slug=product_slug)
     menu_node_id = product.menu_node_id.id
-    return direct_to_template(request, 'details.html', {'product': product, 'menu_node_id':menu_node_id, 'buddy':buddy})
+    return direct_to_template(request, 'details.html', {'product': product, 'menu_node_id':menu_node_id})
 
 def catalog(request, id):
-    buddy = ChineeseBuddy.objects.get(id=random.randint(1,ChineeseBuddy.objects.count()))
-    products = Product.objects.filter(menu_node_id=id)
+    menu_ids = [ x.id for x in MenuNode.objects.get(id=id).get_descendants()]
+    products = Product.objects.filter(menu_node_id__in=menu_ids)
     title = MenuNode.objects.get(id=id).name
-    return direct_to_template(request, 'catalog.html', {'menu_node_id':int(id),'products':products,'title':title, 'buddy':buddy})
+    return direct_to_template(request, 'catalog.html', {'menu_node_id':int(id),'products':products,'title':title,'filter_form':PhoneForm})
 
 def search(request):
-    buddy = ChineeseBuddy.objects.get(id=random.randint(1,ChineeseBuddy.objects.count()))    
     products = Product.objects.filter(title__contains=request.GET['search'])
     title = u'Поиск по запросу: %s' % (request.GET['search'])
-    return direct_to_template(request, 'catalog.html', {'products':products,'title':title, 'buddy':buddy})
+    return direct_to_template(request, 'catalog.html', {'products':products,'title':title})
 
 
 
