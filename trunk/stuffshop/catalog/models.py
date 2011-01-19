@@ -121,10 +121,20 @@ class ProductImage(models.Model):
 class MenuNode(MPTTModel):
     name = models.CharField(max_length=50, unique=True)
     parent = models.ForeignKey('self', null=True, blank=True, related_name='children')
-
+    filterForm = models.CharField(null=True,blank=True,max_length=50,verbose_name='имя класса формы для     фильтра')
     def __unicode__(self):
         return self.name
     @models.permalink
 
     def get_absolute_url(self):
         return ('catalog.views.catalog',[self.id,])
+
+class Order(models.Model):
+    first_name = models.CharField(max_length=20)
+    last_name = models.CharField(max_length=20)
+    patronymic = models.CharField(max_length=20)
+    address = models.CharField(max_length=50)
+    email = models.CharField(max_length=20)
+    phone_number = models.CharField(max_length=20)
+    city = models.CharField(max_length=20)
+    price = models.DecimalField(default=0,max_digits=8,decimal_places=2,verbose_name='Закупочная цена')

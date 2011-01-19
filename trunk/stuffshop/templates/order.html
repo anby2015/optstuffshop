@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block title %}
+    {{ block.super }} - заказ
+{% endblock %}
+{% block content %}
+<div id="order">
+    <h2>Оформление заказа</h2>
+
+    <p>Благодарим вас за проявленный интерес! Заполните, пожалуйста, форму. Все поля для заполнения
+        обязательны.</p>
+
+    <form>
+        <div class="prompt">Фамилия</div>
+        <input class="textinput" type="text" name="lastname">
+
+        <div class="prompt">Имя</div>
+        <input class="textinput" type="text" name="lastname">
+
+        <div class="prompt">Отчество</div>
+        <input class="textinput" type="text" name="lastname">
+
+        <div class="prompt">Почтовый адрес</div>
+        <input class="textinput" type="text" name="lastname">
+
+        <div class="prompt">Эл. почта</div>
+        <input class="textinput" type="text" name="lastname">
+
+        <div class="prompt">Телефон</div>
+        <input class="textinput" type="text" name="lastname">
+
+        <div class="prompt">Вид доставки</div>
+        <select>
+            <option>EMS</option>
+            <option>Почта России</option>
+        </select>
+
+        <div class="prompt">Доставка до</div>
+        <select>
+            <option>Архара</option>
+            <option>Беловежская пуща</option>
+            <option>Москва</option>
+            <option>Ясенево</option>
+        </select>
+
+        <div class="prompt">Вид оплаты</div>
+        <select>
+            <option>Предоплата</option>
+            <option>Наложенный платеж</option>
+        </select>
+
+        <p>Ваши покупки:</p>
+        <table>
+            <tr>
+                <th class="firstcol">Наименование</th>
+                <th>Цена</th>
+                <th>Кол-во</th>
+                <th>Стоимость</th>
+            </tr>
+            <tr class="odd">
+                <td class="firstcol">ChangJiang F035</td>
+                <td>5800</td>
+                <td>1</td>
+                <td>5800</td>
+            </tr>
+            <tr>
+                <td class="firstcol">P4</td>
+                <td>3050</td>
+                <td>3</td>
+                <td>9150</td>
+            </tr>
+            <tr class="odd">
+                <td class="firstcol">Доставка до г.Архара</td>
+                <td>800</td>
+                <td>1</td>
+                <td>800</td>
+            </tr>
+            <tr>
+                <td class="firstcol">Комиссия за перевод</td>
+                <td>580</td>
+                <td>1</td>
+                <td>580</td>
+            </tr>
+            <tr class="total">
+                <td class="firstcol">Итого</td>
+                <td></td>
+                <td></td>
+                <td>16330</td>
+            </tr>
+        </table>
+        <input id="order_button" type="submit" value="Подтвердить заказ">
+    </form>
+</div>
+{% endblock %}
