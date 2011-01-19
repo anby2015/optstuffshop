@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django import forms
 
+
 class PhoneForm(forms.Form):
     NUM_OF_SIM = (('','Без разницы'),(1,'1'),(2,'2'),(3,'3'))
     num_of_sim = forms.ChoiceField(choices=NUM_OF_SIM,label='Количество сим-карт')

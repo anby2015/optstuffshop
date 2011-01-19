@@ -21,10 +21,16 @@ def details(request, product_slug):
     return direct_to_template(request, 'details.html', {'product': product, 'menu_node_id':menu_node_id})
 
 def catalog(request, id):
-    menu_ids = [ x.id for x in MenuNode.objects.get(id=id).get_descendants()]
+    menu = MenuNode.objects.get(id=id)
+    menu_ids = [ x.id for x in menu.get_descendants()]
     products = Product.objects.filter(menu_node_id__in=menu_ids)
     title = MenuNode.objects.get(id=id).name
-    return direct_to_template(request, 'catalog.html', {'menu_node_id':int(id),'products':products,'title':title,'filter_form':PhoneForm})
+    #getting filter form
+    filter_form = ''
+    while menu.get_ancestors() and not menu.filterForm:
+        menu = menu.get_ancestors()[0]
+    if menu.filterForm: filter_form = eval(menu.filterForm)
+    return direct_to_template(request, 'catalog.html', {'menu_node_id':int(id),'products':products,'title':title,'filter_form':filter_form})
 
 def search(request):
     products = Product.objects.filter(title__contains=request.GET['search'])
@@ -75,7 +81,8 @@ def ajax(request):
         return HttpResponse('ok')
 
 
-
+def order(request):
+    return direct_to_template(request, 'order.html', {})
 
 
 
